@@ -1,220 +1,172 @@
+# Global
 
-Callout
-=======
 
-Callout is an implementation of a tool popup with an arrow giving information about a related node, image or area. This popup can render any HTML content. The arrow's direction can be configured.
 
-#### Version: 
-1.0
 
-#### Author: 
-rintoj (Rinto Jose)
 
-Usage
------
+* * *
 
-    var callout = new Callout();
-    callout.attachTo(targetNode);
-    callout.show(["right"]);
+## Class: Callout
 
-Api
-===
 
-### Constructor
-    new Callout()
+### Callout.setTheme(theme) 
 
-### appendTo(node) → {Callout}
+Set theme. Valid values are 'dark', 'light', 'normal'
 
-Append to a target node (uses JQuery.appendTo)
+**Parameters**
 
-#### Parameters:
-**`node`** - `{Object}` Target node
+**theme**: `String`, Valid values are 'dark', 'light', 'normal'
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### attachTo(attachedNode) → {Callout}
-Attach callout to a dom node. From here on callout will be placed around this node.
+### Callout.setSize(width, height) 
 
-#### Parameters:
+Set size of the callout
 
-**`attachedNode`** -	`{Object}`	Target node
+**Parameters**
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**width**: `Number`, Width in pixels
 
-### getContentNode() → {Object}
-Get content node. Attach your content into this node.
+**height**: `Number`, height in pixels
 
-#### Returns:
-**`{Object}`** Returns content node
+**Returns**: `Callout`, Returns 'this' to enable method chaining
 
-**Example**
+### Callout.setArrow(direction) 
 
-    callout.getContentNode().html("This is a tooltip");
-    callout.getContentNode().append(bannerNode);
-    
-### getDomNode() → {Object}
-Return the root node of callout. To avoid unexpected behaviour do NOT manipulate this node
-
-#### Returns:
-**`{Object}`** Returns root node
-
-### hide() → {Callout}
-Hide callout.
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-### positionAround(viewPort, preferredLocations) → {Callout}
-Position around a view port. All the positions from the preferred locations and the reset of the positions from the allowed positions will be iterated until a position is found that places callout's viewport within the container's view port without overflowing. If no suitable position is found the last position is taken.
-
-#### Parameters:
-**`viewPort`** - `{Object}` `{left: Number, top: Number, width: Number, height: Number}`
-
-**`preferredLocations`** - `{Array}` Array of strings; Allowed values are
-
-    top
-    right
-    bottom
-    left
-    top-left
-    top-right
-    bottom-left
-    bottom-right
-    right-top
-    right-left
-    left-top
-    left-bottom
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-### positionAroundNode(node, preferences) → {Callout}
-Position around a dom node.
-
-#### Parameters:
-**`node`** - `{Object}` A dom node
-
-**`preferences`** - `{Array}` Array of prefered locations
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-#### See:
-'positionAround' for allowed values for preferences
-
-### prependTo(node) → {Callout}
-Prepend to a target node (uses JQuery.prependTo)
-
-#### Parameters:
-**`node`** - `{Object}` Target node
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-### remove() → {Callout}
-Remove callout from DOM
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-### setAllowedLocations(allowedLocations) → {Callout}
-Set the allowed locations for the callout. This is the final list of locations allowed for callout. Any value outside this list used preferred location will be ignored.
-
-#### Parameters:
-**`allowedLocations`** - `{Array}` Array of allowed locations
-
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
-
-##### See:
-'positionAround' for allowed values for allowedLocations
-
-### setArrow(direction) → {Callout}
 Set arrow's direction
 
-#### Parameters:
-**`direction`** - `{String}` Arrow's direction. Arrow will be removed if no value or invalid value is given. Valid values are:
+**Parameters**
 
-    top
-    right
-    bottom
-    left
-    top-left
-    top-right
-    bottom-left
-    bottom-right
-    right-top
-    right-left
-    left-top
-    left-bottom
+**direction**: `String`, Allowed directions are:
+                                        top,
+                                        right,
+                                        bottom,
+                                        left,
+                                        top-left,
+                                        top-right,
+                                        bottom-left,
+                                        bottom-right,
+                                        right-top,
+                                        right-left,
+                                        left-top,
+                                        left-bottom
+                                        Arrow will be removed if no value
+                                        or invalid value is given
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### setClassName(className) → {Callout}
-Add additional class name (or more than one name separated by space) can be added to the node.
+### Callout.show(target, preferredLocations) 
 
-#### Parameters:
-**`className`** - `{String}` One or more css class names separated by sapce
+Show call out and position it around a view port or a node. All the positions from the preferred locations
+and the reset of the positions from the allowed positions will be iterated until a position is found that
+places callout's viewport within the container's view port without overflowing. If no suitable position
+is found the last position is taken.
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**Parameters**
 
-### setContainerNode(containerNode) → {Callout}
-Container node for the callout. The view port of the callout will be always calculated to be with in containerNode's view port.
+**target**: `Object`, A dom node or an instance of jQuery.Event
 
-#### Parameters:
-**`containerNode`** - `{Object}` The container node
-		
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**preferredLocations**: `Array`, (optional) Array of prefered locations; Valid values are:
+                                    top, right, bottom, left.
+                                    Following values are allowed only if target is a dom node:
+                                    top-left,
+                                    top-right,
+                                    bottom-left,
+                                    bottom-right,
+                                    right-top,
+                                    right-left,
+                                    left-top,
+                                    left-bottom
 
-### setPreferredLocations(preferredLocations) → {Callout}
-Set preferred locations for the callout. Eg. ["right"] will place callout on the right side of the attached node with left arrow. However this location will be ignored if the calculated view port is outside containerNode's view port.
+**Returns**: `Callout`, Returns 'this' to enable method chaining
 
-#### Parameters:
-**`preferredLocations`** - `{Array}` Array of preferred locations
+### Callout.hide() 
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+Hide callout.
 
-##### See:
-'positionAround' for allowed values for preferredLocations
+**Returns**: `Callout`, Returns 'this' to enable method chaining.
 
-### show(preferences) → {Callout}
-Show callout.
+### Callout.remove() 
 
-#### Parameters:
-**`preferences`** - `{Array}` Array of preferred locations
+Remove callout from DOM
 
-#### Returns:
-**`{Callout}`** Returns 'this' to enable method chaining
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### Callout.getDomNode() 
+
+Return the root node of callout. To avoid unexpected behaviour do NOT manipulate this node
+
+**Returns**: `Object`, The node object
+
+### Callout.getContentNode() 
+
+Get content node. Attach your content into this node.
+
+**Returns**: `Object`, Content node
+
+**Example**:
+```js
+callout.getContentNode().html("This is a tooltip");
+callout.getContentNode().append(bannerNode);
+```
+
+### Callout.setContainer(container) 
+
+Container node for the callout. The view port of the callout will be
+always calculated to be with in container's view port.
+
+**Parameters**
+
+**container**: `Object`, The container node
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### Callout.this.setAutoHide(autohideOn) 
+
+Turn on/off auto hide. Auto hide feature will hide the callout
+when focus is removed
+
+**Parameters**
+
+**autohideOn**: `Boolean`, True to turn on auto hide.
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### Callout.setPreferredLocations(preferredLocations) 
+
+Set preferred locations for the callout. Eg. ["right"] will place
+callout on the right side of the attached node with left arrow.
+However this location will be ignored if the calculated view port
+is outside containerNode's view port.
+
+**Parameters**
+
+**preferredLocations**: `Array`, Array of preferred locations
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### Callout.setAllowedLocations(allowedLocations) 
+
+Set the allowed locations for the callout. This is the final list of
+locations allowed for callout. Any value outside this list used preferred
+location will be ignored.
+
+**Parameters**
+
+**allowedLocations**: `Array`, Array of allowed locations
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
 
 
-License
--------
 
-The MIT License (MIT)
+* * *
 
-Copyright (c) 2015 rintoj
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+
+
+
+
+
 
