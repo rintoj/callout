@@ -1,9 +1,3 @@
-# Global
-
-
-
-
-
 * * *
 
 ## Class: Callout
@@ -121,7 +115,7 @@ always calculated to be with in container's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.this.setAutoHide(autohideOn) 
+### Callout.setAutoHide(autohideOn) 
 
 Turn on/off auto hide. Auto hide feature will hide the callout
 when focus is removed
@@ -160,7 +154,6 @@ location will be ignored.
 
 
 * * *
-
 
 
 
