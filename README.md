@@ -2,8 +2,38 @@
 
 ## Class: Callout
 
+This is an implementation of a tooltip / callout with an arrow giving information about a related node, image or area. This can render any HTML content within. The arrow's direction can be configured. This class is capable of rearranging callout to a best suited place based on preferred and allowed locations. 
 
-### Callout.setTheme(theme) 
+### Usage
+
+    var callout = new Callout({
+        content: "I'm callout",
+        width: 150,
+        height: 20
+    });
+    
+    $(".targetNode").on("click", function () {
+        callout.show(this, ["top"]); // show on top if possible
+    });
+    
+    $("body").on("contextmenu", function(event) {
+        callout.show(event);
+        event.preventDefault();
+    });
+
+### Resources
+
+    <link rel="stylesheet" href="css/callout.css">
+    <script src="js/src/Callout.js"></script>
+
+### Dependency
+
+    <script src="js/lib/jquery-2.1.1.js"></script>
+
+API
+---
+ 
+### setTheme(theme) 
 
 Set theme. Valid values are 'dark', 'light', 'normal'
 
@@ -13,7 +43,7 @@ Set theme. Valid values are 'dark', 'light', 'normal'
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.setSize(width, height) 
+### setSize(width, height) 
 
 Set size of the callout
 
@@ -25,7 +55,7 @@ Set size of the callout
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.setArrow(direction) 
+### setArrow(direction) 
 
 Set arrow's direction
 
@@ -49,7 +79,7 @@ Set arrow's direction
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.show(target, preferredLocations) 
+### show(target, preferredLocations) 
 
 Show call out and position it around a view port or a node. All the positions from the preferred locations
 and the reset of the positions from the allowed positions will be iterated until a position is found that
@@ -74,25 +104,25 @@ is found the last position is taken.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.hide() 
+### hide() 
 
 Hide callout.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining.
 
-### Callout.remove() 
+### remove() 
 
 Remove callout from DOM
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.getDomNode() 
+### getDomNode() 
 
 Return the root node of callout. To avoid unexpected behaviour do NOT manipulate this node
 
 **Returns**: `Object`, The node object
 
-### Callout.getContentNode() 
+### getContentNode() 
 
 Get content node. Attach your content into this node.
 
@@ -104,7 +134,7 @@ callout.getContentNode().html("This is a tooltip");
 callout.getContentNode().append(bannerNode);
 ```
 
-### Callout.setContainer(container) 
+### setContainer(container) 
 
 Container node for the callout. The view port of the callout will be
 always calculated to be with in container's view port.
@@ -115,7 +145,7 @@ always calculated to be with in container's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.setAutoHide(autohideOn) 
+### setAutoHide(autohideOn) 
 
 Turn on/off auto hide. Auto hide feature will hide the callout
 when focus is removed
@@ -126,7 +156,7 @@ when focus is removed
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.setPreferredLocations(preferredLocations) 
+### setPreferredLocations(preferredLocations) 
 
 Set preferred locations for the callout. Eg. ["right"] will place
 callout on the right side of the attached node with left arrow.
@@ -139,7 +169,7 @@ is outside containerNode's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### Callout.setAllowedLocations(allowedLocations) 
+### setAllowedLocations(allowedLocations) 
 
 Set the allowed locations for the callout. This is the final list of
 locations allowed for callout. Any value outside this list used preferred
