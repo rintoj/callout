@@ -33,12 +33,14 @@ This is an implementation of tooltip. The tooltip can render any HTML content wi
 
     <script src="js/lib/jquery-2.1.1.js"></script>
 
+* * *
+
 API
 ---
 
-## Constructor: Callout
+## Constructor: new Callout(options)
 
-**Parameters**
+**Options**
 
 **content**: `String`, Specify content for the callout within this member.
 
@@ -55,7 +57,7 @@ ignored.
 
 **allowedLocations**: `Array`, Locations that are allowed for the callout. Valid values are "top", "top-left", "top-right", "right", "right-top", "right-bottom", "bottom", "bottom-right", "bottom-left", "left", "left-top", "left-bottom"
 
-### show(target, preferredLocations) 
+## show(target, preferredLocations) 
 
 Show callout and position it around a view port or a node. All the valid positions from the preferred
 locations and the reset of the positions from the allowed positions will be iterated until a position is
@@ -70,25 +72,25 @@ position the callout is place within the target node.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### hide() 
+## hide() 
 
 Hide callout.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining.
 
-### remove() 
+## remove() 
 
 Remove callout from DOM
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getDomNode() 
+## getDomNode() 
 
 Return the root node of callout. To avoid unexpected behaviour do NOT manipulate this node
 
 **Returns**: `Object`, The node object
 
-### getContentNode() 
+## getContentNode() 
 
 Get content node. Attach your content into this node.
 
@@ -100,7 +102,7 @@ callout.getContentNode().html("This is a tooltip"); // setting text
 callout.getContentNode().append(bannerNode); // setting inner node
 ```
 
-### setContent(content) 
+## setContent(content) 
 
 Set content of the callout.
 
@@ -110,13 +112,13 @@ Set content of the callout.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getArrow() 
+## getArrow() 
 
 Get current direction of arrow
 
 **Returns**: `String`, Returns direction of arrow
 
-### setArrow(direction) 
+## setArrow(direction) 
 
 Set direction of arrow
 
@@ -126,13 +128,13 @@ Set direction of arrow
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getContainer() 
+## getContainer() 
 
 Get container
 
 **Returns**: `Node | String`, Returns 'container'
 
-### setContainer(container) 
+## setContainer(container) 
 
 Container node for the callout. The view port of the callout will be
 always calculated to be with in container's view port.
@@ -143,13 +145,13 @@ always calculated to be with in container's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getAutoHide() 
+## getAutoHide() 
 
 Check if auto hide is on or off
 
 **Returns**: `Boolean`, Returns 'true' if auto hide is on
 
-### setAutoHide(autohideOn) 
+## setAutoHide(autohideOn) 
 
 Turn on/off auto hide. Auto hide feature will hide the callout
 when focus is removed
@@ -160,13 +162,13 @@ when focus is removed
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getPreferredLocations() 
+## getPreferredLocations() 
 
 Get preferred locations.
 
 **Returns**: `Array`, Array of locations that are preferred
 
-### setPreferredLocations(preferredLocations) 
+## setPreferredLocations(preferredLocations) 
 
 Set preferred locations for the callout. Eg. ["right"] will place
 callout on the right side of the attached node with left arrow.
@@ -179,13 +181,13 @@ is outside containerNode's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getAllowedLocations() 
+## getAllowedLocations() 
 
 Get allowed locations.
 
 **Returns**: `Array`, Array of locations that are allowed
 
-### setAllowedLocations(allowedLocations) 
+## setAllowedLocations(allowedLocations) 
 
 Set the allowed locations for the callout. This is the final list of locations allowed for
 callout. Any value outside this list, if used in preferred locations, will be ignored.
@@ -196,13 +198,13 @@ callout. Any value outside this list, if used in preferred locations, will be ig
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getTheme() 
+## getTheme() 
 
 Get theme.
 
 **Returns**: `String`, Theme.
 
-### setTheme(theme) 
+## setTheme(theme) 
 
 Set theme. Valid values are 'dark', 'light', 'normal'
 
@@ -212,13 +214,13 @@ Set theme. Valid values are 'dark', 'light', 'normal'
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
-### getSize() 
+## getSize() 
 
 Get size of the callout.
 
 **Returns**: `Object`, An object in the format {width: Number, height: Number}.
 
-### setSize(width, height) 
+## setSize(width, height) 
 
 Set size of the callout
 
