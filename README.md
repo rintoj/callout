@@ -2,20 +2,23 @@
 
 ## Class: Callout
 
-This is an implementation of a tooltip / callout with an arrow giving information about a related node, image or area. This can render any HTML content within. The arrow's direction can be configured. This class is capable of rearranging callout to a best suited place based on preferred and allowed locations. 
+This is an implementation of tooltip. The tooltip can render any HTML content within and the arrow's direction can be configured. This module is capable of rearranging the position to a best suited place based on preferred and allowed locations.
 
 ### Usage
 
     var callout = new Callout({
         content: "I'm callout",
-        width: 150,
-        height: 20
+        size: {
+            width: 150,
+            height: 20
+        },
+        autohide: true
     });
-    
+
     $(".targetNode").on("click", function () {
         callout.show(this, ["top"]); // show on top if possible
     });
-    
+
     $("body").on("contextmenu", function(event) {
         callout.show(event);
         event.preventDefault();
@@ -32,75 +35,38 @@ This is an implementation of a tooltip / callout with an arrow giving informatio
 
 API
 ---
- 
-### setTheme(theme) 
 
-Set theme. Valid values are 'dark', 'light', 'normal'
+## Constructor: Callout
 
 **Parameters**
 
-**theme**: `String`, Valid values are 'dark', 'light', 'normal'
+**content**: `String`, Specify content for the callout within this member.
 
-**Returns**: `Callout`, Returns 'this' to enable method chaining
+**theme**: `String`, Theme. Valid values are 'dark', 'light', 'default'. Default value is 'default'
 
-### setSize(width, height) 
+**size**: `Object`, Expect an object with 'width' and 'height'. Eg: {width: 25, height: 25}
 
-Set size of the callout
+**autohide**: `Booean`, If set to true callout will be made hidden when focus is lost; default value is true.
 
-**Parameters**
+**container**: `String | Node`, If specified, callout will try to position itself within the specified dom node; default value is body
 
-**width**: `Number`, Width in pixels
+**preferredLocations**: `Array`, The preferred locations of callout. This must be a subset of allowed location. Any other value will be
+ignored.
 
-**height**: `Number`, height in pixels
-
-**Returns**: `Callout`, Returns 'this' to enable method chaining
-
-### setArrow(direction) 
-
-Set arrow's direction
-
-**Parameters**
-
-**direction**: `String`, Allowed directions are:
-                                        top,
-                                        right,
-                                        bottom,
-                                        left,
-                                        top-left,
-                                        top-right,
-                                        bottom-left,
-                                        bottom-right,
-                                        right-top,
-                                        right-left,
-                                        left-top,
-                                        left-bottom
-                                        Arrow will be removed if no value
-                                        or invalid value is given
-
-**Returns**: `Callout`, Returns 'this' to enable method chaining
+**allowedLocations**: `Array`, Locations that are allowed for the callout. Valid values are "top", "top-left", "top-right", "right", "right-top", "right-bottom", "bottom", "bottom-right", "bottom-left", "left", "left-top", "left-bottom"
 
 ### show(target, preferredLocations) 
 
-Show call out and position it around a view port or a node. All the positions from the preferred locations
-and the reset of the positions from the allowed positions will be iterated until a position is found that
-places callout's viewport within the container's view port without overflowing. If no suitable position
-is found the last position is taken.
+Show callout and position it around a view port or a node. All the valid positions from the preferred
+locations and the reset of the positions from the allowed positions will be iterated until a position is
+found that places callout's viewport within the container's view port without overflowing. If no suitable
+position the callout is place within the target node.
 
 **Parameters**
 
-**target**: `Object`, A dom node or an instance of jQuery.Event
+**target**: `Node | jQuery.Event`, (Mandatory) Dom node or an instance of jQuery.Event
 
-**preferredLocations**: `Array`, (optional) Array of prefered locations; Valid values are:
-                                    top, right, bottom, left.
-                                    Following values are allowed only if target is a dom node:
-                                    top-left,
-                                    top-right,
-                                    bottom-left,
-                                    bottom-right,
-                                    right-top,
-                                    right-left,
-                                    left-top,
-                                    left-bottom
+**preferredLocations**: `Array`, (optional) Array of prefered locations;
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
@@ -130,9 +96,41 @@ Get content node. Attach your content into this node.
 
 **Example**:
 ```js
-callout.getContentNode().html("This is a tooltip");
-callout.getContentNode().append(bannerNode);
+callout.getContentNode().html("This is a tooltip"); // setting text
+callout.getContentNode().append(bannerNode); // setting inner node
 ```
+
+### setContent(content) 
+
+Set content of the callout.
+
+**Parameters**
+
+**content**: `String`, The content as string
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### getArrow() 
+
+Get current direction of arrow
+
+**Returns**: `String`, Returns direction of arrow
+
+### setArrow(direction) 
+
+Set direction of arrow
+
+**Parameters**
+
+**direction**: `String`, All possible values for 'allowedLocations' are valid here
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### getContainer() 
+
+Get container
+
+**Returns**: `Node | String`, Returns 'container'
 
 ### setContainer(container) 
 
@@ -145,6 +143,12 @@ always calculated to be with in container's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
+### getAutoHide() 
+
+Check if auto hide is on or off
+
+**Returns**: `Boolean`, Returns 'true' if auto hide is on
+
 ### setAutoHide(autohideOn) 
 
 Turn on/off auto hide. Auto hide feature will hide the callout
@@ -155,6 +159,12 @@ when focus is removed
 **autohideOn**: `Boolean`, True to turn on auto hide.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### getPreferredLocations() 
+
+Get preferred locations.
+
+**Returns**: `Array`, Array of locations that are preferred
 
 ### setPreferredLocations(preferredLocations) 
 
@@ -169,11 +179,16 @@ is outside containerNode's view port.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
+### getAllowedLocations() 
+
+Get allowed locations.
+
+**Returns**: `Array`, Array of locations that are allowed
+
 ### setAllowedLocations(allowedLocations) 
 
-Set the allowed locations for the callout. This is the final list of
-locations allowed for callout. Any value outside this list used preferred
-location will be ignored.
+Set the allowed locations for the callout. This is the final list of locations allowed for
+callout. Any value outside this list, if used in preferred locations, will be ignored.
 
 **Parameters**
 
@@ -181,11 +196,43 @@ location will be ignored.
 
 **Returns**: `Callout`, Returns 'this' to enable method chaining
 
+### getTheme() 
+
+Get theme.
+
+**Returns**: `String`, Theme.
+
+### setTheme(theme) 
+
+Set theme. Valid values are 'dark', 'light', 'normal'
+
+**Parameters**
+
+**theme**: `String`, Valid values are 'dark', 'light', 'normal'
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
+### getSize() 
+
+Get size of the callout.
+
+**Returns**: `Object`, An object in the format {width: Number, height: Number}.
+
+### setSize(width, height) 
+
+Set size of the callout
+
+**Parameters**
+
+**width**: `Number`, Width in pixels
+
+**height**: `Number`, height in pixels
+
+**Returns**: `Callout`, Returns 'this' to enable method chaining
+
 
 
 * * *
-
-
 
 
 
