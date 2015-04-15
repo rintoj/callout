@@ -1,0 +1,221 @@
+.callout {
+    position: absolute;
+    float: left;
+    background: lightgray;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 3px;
+    outline: none;
+    min-height: 25px;
+    min-width: 25px;
+    tabindex: -1;
+    z-index: 999999;
+}
+
+.callout .content {
+    top: 0;
+    left: 0;
+    text-overflow: ellipsis;
+}
+
+.callout .arrow {
+    margin: auto;
+    position: absolute;
+    background: lightgray;
+}
+
+.callout .arrow:after,
+.callout .arrow:before {
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+}
+
+.callout .arrow.top {
+    top: 0%;
+    left: 50%;
+}
+
+.callout .arrow.top:after,
+.callout .arrow.top:before {
+    bottom: 100%;
+    left: 50%;
+}
+
+.callout .arrow.top:after {
+    border-bottom-color: lightgray;
+    border-width: 9px;
+    margin-left: -9px;
+}
+
+.callout .arrow.top:before {
+    border-bottom-color: rgb(170, 170, 170);
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.callout .arrow.bottom {
+    bottom: 0%;
+    left: 50%;
+}
+
+.callout .arrow.bottom:after,
+.callout .arrow.bottom:before {
+    top: 100%;
+    left: 50%;
+}
+
+.callout .arrow.bottom:after {
+    border-top-color: lightgray;
+    border-width: 9px;
+    margin-left: -9px;
+}
+
+.callout .arrow.bottom:before {
+    border-top-color: rgb(170, 170, 170);
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.callout .arrow.left {
+    top: 50%;
+}
+
+.callout .arrow.left:after,
+.callout .arrow.left:before {
+    right: 100%;
+    top: 50%;
+}
+
+.callout .arrow.left:after {
+    border-right-color: lightgray;
+    border-width: 9px;
+    margin-top: -9px;
+}
+
+.callout .arrow.left:before {
+    border-right-color: rgb(170, 170, 170);
+    border-width: 10px;
+    margin-top: -10px;
+}
+
+.callout .arrow.right {
+    top: 50%;
+    right: 0;
+}
+
+.callout .arrow.right:after,
+.callout .arrow.right:before {
+    left: 100%;
+    top: 50%;
+}
+
+.callout .arrow.right:after {
+    border-left-color: lightgray;
+    border-width: 9px;
+    margin-top: -9px;
+}
+
+.callout .arrow.right:before {
+    border-left-color: rgb(170, 170, 170);
+    border-width: 10px;
+    margin-top: -10px;
+}
+
+.callout .arrow.align-left {
+    left: 13px; /** Arrow height + margin **/
+    right: auto;
+}
+
+.callout .arrow.align-right {
+    right: 13px; /** Arrow height + margin **/
+    left: auto;
+}
+
+.callout .arrow.align-top {
+    top: 12px;
+}
+
+.callout .arrow.align-bottom {
+    margin-top: -12px;
+    top: 100%;
+}
+
+.callout.dark {
+    color: white;
+    background: rgb(53, 53, 53);
+    border: 1px solid rgb(78, 78, 78);
+}
+
+.callout.dark .arrow.top:after {
+    border-bottom-color: rgb(53, 53, 53);
+}
+
+.callout.dark .arrow.top:before {
+    border-bottom-color: rgb(78, 78, 78);
+}
+
+.callout.dark .arrow.bottom:after {
+    border-top-color: rgb(53, 53, 53);
+}
+
+.callout.dark .arrow.bottom:before {
+    border-top-color: rgb(78, 78, 78);
+}
+
+.callout.dark .arrow.left:after {
+    border-right-color: rgb(53, 53, 53);
+}
+
+.callout.dark .arrow.left:before {
+    border-right-color: rgb(78, 78, 78);
+}
+
+.callout.dark .arrow.right:after {
+    border-left-color: rgb(53, 53, 53);
+}
+
+.callout.dark .arrow.right:before {
+    border-left-color: rgb(78, 78, 78);
+}
+
+.callout.light {
+    color: dimgrey;
+    background: #fff;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.callout.light .arrow.top:after {
+    border-bottom-color: #fff;
+}
+
+.callout.light .arrow.top:before {
+    border-bottom-color: rgb(196, 196, 196);
+}
+
+.callout.light .arrow.bottom:after {
+    border-top-color: #fff;
+}
+
+.callout.light .arrow.bottom:before {
+    border-top-color: rgb(196, 196, 196);
+}
+
+.callout.light .arrow.left:after {
+    border-right-color: #fff;
+}
+
+.callout.light .arrow.left:before {
+    border-right-color: rgb(196, 196, 196);
+}
+
+.callout.light .arrow.right:after {
+    border-left-color: #fff;
+}
+
+.callout.light .arrow.right:before {
+    border-left-color: rgb(196, 196, 196);
+}

@@ -1,0 +1,28 @@
+.targetNode {
+    background: gray;
+    position: relative;
+    float: left;
+    left: 200px;
+    top: 100px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+body {
+    overflow: hidden;
+}
+
+.container {
+    width: 70%;
+    height: 50%;
+    background: linear-gradient(#EFEFEF, rgb(161, 161, 161));
+}
+
+.callout .content {
+    font-family: sans-serif;
+    font-size: 10px;
+    padding: 5px;
+}

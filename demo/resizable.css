@@ -1,0 +1,103 @@
+.ui-resizable-handle {
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.ui-resizable-n {
+    cursor: n-resize;
+    height: 7px;
+    width: 100%;
+    top: -5px;
+    left: 0;
+}
+
+.ui-resizable-s {
+    cursor: s-resize;
+    height: 7px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+}
+
+.ui-resizable-e {
+    cursor: e-resize;
+    width: 7px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-w {
+    cursor: w-resize;
+    width: 7px;
+    left: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-se {
+    cursor: se-resize;
+    width: 12px;
+    height: 12px;
+    right: 1px;
+    bottom: 1px;
+}
+
+.ui-resizable-sw {
+    cursor: sw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    bottom: -5px;
+}
+
+.ui-resizable-nw {
+    cursor: nw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    top: -5px;
+}
+
+.ui-resizable-ne {
+    cursor: ne-resize;
+    width: 9px;
+    height: 9px;
+    right: -5px;
+    top: -5px;
+}
+
+.ui-resizable {
+    border: 1px solid rgb(0, 187, 255);
+}
+
+.ui-resizable-handle {
+    background: rgb(0, 187, 255);
+    width: 1px;
+    height: 1px;
+    padding: 2px;
+    border-radius: 10px;
+    margin: 0px;
+}
+
+.ui-resizable-handle.ui-resizable-n,
+.ui-resizable-handle.ui-resizable-s {
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.ui-resizable-handle.ui-resizable-e,
+.ui-resizable-handle.ui-resizable-w {
+    margin: auto;
+    top: 0;
+    bottom: 0;
+}
+
+.ui-resizable-handle.ui-resizable-se {
+    right: -4px;
+    bottom: -4px
+}

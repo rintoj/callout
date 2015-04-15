@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Callout - demo</title>
+
+    <!-- required thridparty resources -->
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="resizable.css">
+    <script src="../src/lib/jquery-2.1.1.js"></script>
+    <script src="../src/lib/jquery-ui.js"></script>
+
+    <!-- loading callout -->
+    <link rel="stylesheet" href="../src/css/callout.css">
+    <script src="../src/js/Callout.js"></script>
+
+</head>
+
+<body>
+
+    <div class="targetNode"></div>
+    <div class="container"></div>
+
+    <script>
+        // using as tooltip
+        var tooltip = new Callout({
+            content: "I'm tooltip created from Callout",
+            container: ".container",
+            theme: "light",
+            size: {
+                width: 150
+            },
+            autohide: true
+        });
+
+        $(".targetNode").on("click", function () {
+            var viewPort = {
+                left: $(this).position().left,
+                top: $(this).position().top,
+                width: $(this).width(),
+                height: $(this).height()
+            }
+            //tooltip.show(this, ["top"]);
+            tooltip.show(viewPort, ["top"]);
+        });
+
+        // using as context menu
+        var contextCallout = new Callout({
+            content: "I'm context menu created from Callout",
+            container: ".container",
+            theme: "dark",
+            width: 150,
+            height: 40
+        });
+
+        $("body").on("contextmenu", function (event) {
+            contextCallout.show(event, ["bottom"]);
+            event.preventDefault();
+        });
+
+        // making callouts and target node resizable and draggable
+        resizeOptions = {
+            handles: "all"
+        }
+        tooltip.getDomNode().resizable(resizeOptions);
+        contextCallout.getDomNode().resizable(resizeOptions);
+        $(".targetNode").draggable().resizable(resizeOptions);
+    </script>
+
+</body>
+
+</html>
