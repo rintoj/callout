@@ -33,14 +33,7 @@
         });
 
         $(".targetNode").on("click", function () {
-            var viewPort = {
-                left: $(this).position().left,
-                top: $(this).position().top,
-                width: $(this).width(),
-                height: $(this).height()
-            }
-            //tooltip.show(this, ["top"]);
-            tooltip.show(viewPort, ["top"]);
+            tooltip.show(this, ["top"]);
         });
 
         // using as context menu
